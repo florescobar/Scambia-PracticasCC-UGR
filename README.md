@@ -7,6 +7,6 @@ Scambia es el proyecto propuesto para las practicas de la asignatura Cloud Compu
 
 ### Hito 0
 ------------
-- [Descripción del proyecto](/docs/hito 0/0-descripcionproyecto.md).
-- [Configuración de Git y Github](/docs/hito 0/1-configuraciongit.md).
+- [Descripción del proyecto](/docs/hito_0/0_descripcionproyecto.md).
+- [Configuración de Git y Github](/docs/hito_0/1_configuraciongit.md).
 - [Licencia](https://github.com/florescobar/Scambia-PracticasCC-UGR/blob/main/LICENSE) MIT.
