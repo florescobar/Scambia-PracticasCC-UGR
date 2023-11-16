@@ -1,15 +1,21 @@
 # Hito 2
-#### Gestor de paquetes
-------------
-Composer es el gestor de dependencias que ofrece Laravel, se podrian utilizar otras herramientas pero destaca por los siguientes motivos.
-- Composer es el gestor de dependencias mas popular en PHP, por lo tanto existe una gran cantidad de recursos y documentacion.
-- Esta integrado con Packgist que es el repositorio central de paquetes de PHP, en la que los desarrolladores comparten sus librerias.
-- Es compatible con Laravel, por lo que la integracion de dependencias sera mas sencilla.
-- Es facil de instalar, al menos para Windows.
-- El archivo composer.json es muy facil de entender y podemos configurar las versiones para facilitar la actualizacion y evitar conflictos. 
-- Esta inspirado en NPM, que es el gestor más popular. 
 
-Para más detalles de composer, click [aquí](https://getcomposer.org/)
+#### Gestor de tareas
+------------
+
+Si bien Laravel tiene a Artisan como su interfaz de linea de comandos y nos ofrece la posibilidad de configurar tareas personalizadas de manera sencilla, en este proyecto usaremos make ya que es generico (no es propio de un lenguaje de programación) por lo tanto podemos usar diferentes entornos, ademas que no tendremos conflictos a la hora de ejecutar tareas en distintas plataformas, pensando tambien que mas adelante podemos configurar las tareas para el despliegue en Docker.
+
+Para configurar make en Windows 
+
+1.  [Descargar](https://sourceforge.net/projects/mingw/files/) e instalar el programa MinimalistGNU (MinGW), ejecutamos el archivo mingw-get-setup.exe.
+
+2. Seleccionar los paquetes necesarios.
+3. Agregar MinGW al path en las variables de entorno, Agremos al path `C:\MinGW\bin` .
+4. Ejecutamos el siguiente comando `mingw-get install mingw32-make` para instalar make.
+5. Renombramos mingw32-make.exe a make.exe en la carpeta de instalación
+6. Ejecutamos `make -v` para verificar que este correcto.
+
+Tomar en consideración la siguiente guia para la instalación. [Guia](https://www.fdi.ucm.es/profesor/luis/fp/devtools/mingw.html)
 
 
 #### Framework de pruebas
@@ -23,3 +29,15 @@ El principal motivo de usar PHPUnit es por su integracion con Laravel (Framework
 ------------
 
 Al usar PHPUnit como framework, este ya incluye un conjunto de aserciones que podemos utilizar en la ejecucion de las pruebas, ya que contiene aserciones para difentes tipos de datos, comparaciones, excepciones, arrays, entre otros. Para mas informacion revisar el [link](https://docs.phpunit.de/en/10.0/assertions.html)
+
+#### Gestor de paquetes
+------------
+Composer es el gestor de dependencias que ofrece Laravel, se podrian utilizar otras herramientas pero destaca por los siguientes motivos.
+- Composer es el gestor de dependencias mas popular en PHP, por lo tanto existe una gran cantidad de recursos y documentacion.
+- Esta integrado con Packgist que es el repositorio central de paquetes de PHP, en la que los desarrolladores comparten sus librerias.
+- Es compatible con Laravel, por lo que la integracion de dependencias sera mas sencilla.
+- Es facil de instalar, al menos para Windows.
+- El archivo composer.json es muy facil de entender y podemos configurar las versiones para facilitar la actualizacion y evitar conflictos. 
+- Esta inspirado en NPM, que es el gestor más popular. 
+
+Para más detalles de composer, click [aquí](https://getcomposer.org/)
