@@ -9,3 +9,10 @@ entidad:
   scambia-api\app\Models\TypeNotification.php
   scambia-api\app\Models\User.php
   scambia-api\app\Models\UserNotification.php
+lenguaje: 
+  PHP
+test:   
+  scambia-api\tests\Feature\CurrencyRateTest.php
+  scambia-api\tests\Unit\CurrencyRateTest.php
+fichero_tareas:
+  scambia-api\Makefile
