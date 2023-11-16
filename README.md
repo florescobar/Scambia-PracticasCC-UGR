@@ -17,9 +17,11 @@ Scambia es el proyecto propuesto para las practicas de la asignatura Cloud Compu
 - [Milestones](https://github.com/florescobar/Scambia-PracticasCC-UGR/milestones).
 - [Creación de clases (cc.yaml)](/cc.yaml).
 
-### Hito 1
+### Hito 2
 ------------
-- [Gestor de tareas, biblioteca de aserciones, Framework](/docs/hito_2/0_herramientas_test.md).
+- [Gestor de tareas & Configuración](/docs/hito_2/0_gestor_tareas.md).
+- [Framework y Aserciones](/docs/hito_2/1_herramientas_test.md).
+- [Tests](/docs/hito_2/2_tests.md).
 
 
 
