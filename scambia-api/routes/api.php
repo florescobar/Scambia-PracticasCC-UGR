@@ -18,4 +18,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('currencyrate','App\Http\Controllers\CurrencyRateController@get');
+
 Route::post('currencyrate/calculate','App\Http\Controllers\CurrencyRateController@calculateExchange');

@@ -8,6 +8,21 @@ use Validator;
 
 class CurrencyRateController extends Controller
 {
+    public function get()
+    {
+        try {
+            $message=''; 
+            $ask = 3.784;
+
+            return response()->json(['data' => $ask , 'message'=>(strlen($message)>0 ? $message : 'Registro guardado correctamente'), 'errorCode'=>(strlen($message)>0 ? 1 : 0)]);
+                
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            return response()->json(['data' => null, 'message'=>'Ha ocurrido un error inesperado. Intente nuevamente: '.$e, 'errorCode'=>1]);     
+        }
+    }
+
     public function calculateExchange(Request $request)
     {
         try
@@ -18,13 +33,13 @@ class CurrencyRateController extends Controller
 
             $validator=Validator::make(
             [
-                '¿Cuanto envias?' => trim($request->input('amount'))
+                '¿Cuanto dinero envias?' => trim($request->input('amount'))
             ],
             [
-                '¿Cuanto envias?' => ['required']
+                '¿Cuanto dinero envias?' => ['required']
             ],
             [
-                'required' => 'El campo ":Attribute" es requerido. '
+                'required' => 'El campo ":Attribute" es requerido.'
             ]);
 
             if($validator->fails())
