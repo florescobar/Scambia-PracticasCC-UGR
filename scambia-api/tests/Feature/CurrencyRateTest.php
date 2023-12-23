@@ -12,7 +12,7 @@ class CurrencyRateTest extends TestCase
         $expected = round( $amount / $askPrice, 2, PHP_ROUND_HALF_DOWN);
 
         $data = [
-            "amount" => "1000"
+            "amount" => 1000
         ];
 
         $response = $this->post('api/currencyrate/calculate', $data);
@@ -23,7 +23,8 @@ class CurrencyRateTest extends TestCase
             'message' => '',
             'data'=> ['quotedAmount'=>$expected]
         ]);
-    }
+
+    } 
 
     public function test_calculate_amount(): void
     {
@@ -66,7 +67,7 @@ class CurrencyRateTest extends TestCase
             'errorCode' => '0',
             'message' => 'Ok',
         ]);
-    }
+    } 
 
     public function test_get_currencyrate(): void
     {        
@@ -74,6 +75,4 @@ class CurrencyRateTest extends TestCase
 
         $response->assertStatus(200);
     }
-
-    
 }

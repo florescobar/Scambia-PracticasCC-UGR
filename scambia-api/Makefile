@@ -1,4 +1,2 @@
-composer-update:
-	php artisan test
-test: 
-	php artisan test
+test:
+	docker-compose run web php artisan test
