@@ -23,6 +23,14 @@ Scambia es el proyecto propuesto para las practicas de la asignatura Cloud Compu
 - [Framework y Aserciones](/docs/hito_2/1_herramientas_test.md).
 - [Tests](/docs/hito_2/2_tests.md).
 
+### Hito 3
+------------
+- [Elección del contenedor base](/docs/hito_3/0_contenedor_base.md).
+- [Configuración de Dockerfile](/docs/hito_3/1_configuracion_dockerfile.md).
+- [Contenedor subido a Dockerhub](/docs/hito_3/2_docker_hub.md).
+- [Uso de registros alternativos y públicos de contenedores](/docs/hito_3/3_actions.md).
+
+
 
 
 
