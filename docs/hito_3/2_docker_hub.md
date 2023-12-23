@@ -1,20 +1,23 @@
-# Hito 2
+# Hito 3
 
-#### Gestor de tareas
+#### Contenedor subido a Dockerhub
 ------------
 
-Si bien Laravel tiene a Artisan como su interfaz de linea de comandos y nos ofrece la posibilidad de configurar tareas personalizadas de manera sencilla, en este proyecto usaremos make ya que es generico (no es propio de un lenguaje de programación) por lo tanto podemos usar diferentes entornos, ademas que no tendremos conflictos a la hora de ejecutar tareas en distintas plataformas, pensando tambien que mas adelante podemos configurar las tareas para el despliegue en Docker.
+Para subir el contenedor en el que se ejecutarón las pruebas unitarias, necesitamos etiquetarla con nuestro nombre de usuario e imagen. Para ello ejecutamos el siguiente comando:
 
-Para configurar make en Windows 
+```
+docker tag scambia-api-web:latest florescobar919/scambia-api-web:latest
+```
 
-1.  [Descargar](https://sourceforge.net/projects/mingw/files/) e instalar el programa MinimalistGNU (MinGW), ejecutamos el archivo mingw-get-setup.exe.
+Ahora subimos la imagen a docker hub con el siguiente comando:
+```
+docker push florescobar919/scambia-api-web:latest
+```
 
-2. Seleccionar los paquetes necesarios.
-![](https://raw.githubusercontent.com/florescobar/Scambia-PracticasCC-UGR/main/docs/img/hito1_1.png)
-3. Agregar MinGW al path en las variables de entorno, Agremos al path `C:\MinGW\bin` .
-4. Ejecutamos el siguiente comando `mingw-get install mingw32-make` para instalar make.
-5. Renombramos mingw32-make.exe a make.exe en la carpeta de instalación
-6. Ejecutamos `make -v` para verificar que este correcto.
-![](https://raw.githubusercontent.com/florescobar/Scambia-PracticasCC-UGR/main/docs/img/hito1_2.png)
+Al ejecutar obtenemos el siguiente resultado:
 
-Tomar en consideración la siguiente guia para la instalación. [Guia](https://www.fdi.ucm.es/profesor/luis/fp/devtools/mingw.html)
+![](https://raw.githubusercontent.com/florescobar/Scambia-PracticasCC-UGR/main/docs/img/hito3_7.png)
+
+Podemos ver tambien el resultado en nuestro perfil de Dockerhub:
+
+![](https://raw.githubusercontent.com/florescobar/Scambia-PracticasCC-UGR/main/docs/img/hito3_6.png)
