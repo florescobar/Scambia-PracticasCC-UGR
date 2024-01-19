@@ -5,18 +5,14 @@ pipeline {
         APP_ENV = 'production'
     }
 
-    tools {
-        // Definir la herramienta 'make' con la ruta adecuada
-        // Puedes configurar esto desde la interfaz de Jenkins en "Configuración de herramientas globales"
-        // o mediante un archivo de configuración de Jenkins
-        bat 'make = C:\\MinGW\\bin\\make.exe'
-    }
-
     stages {
-
         stage('Ejecutar Pruebas') {
+            environment {
+                // Definir la variable de entorno para el ejecutable make
+                PATH = "C:\\MinGW\\bin\\:${env.PATH}"
+            }
             steps {
-                // Ejecutar pruebas PHPUnit
+                // Ejecutar pruebas PHPUnit utilizando el ejecutable 'make' definido en el PATH
                 bat 'make test'
             }
         }
