@@ -26,6 +26,13 @@ pipeline {
             }
         }
 
+        stage('Instalar Dependencias') {
+            steps {
+                // Instalar dependencias de Laravel usando Composer
+                sh 'composer install --no-interaction --prefer-dist'
+            }
+        }
+
         stage('Test') {
             steps {
                 script {
