@@ -29,7 +29,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    bat 'cd scambia-api && make test'
+                    bat 'make test'
                 }
             }
         }
