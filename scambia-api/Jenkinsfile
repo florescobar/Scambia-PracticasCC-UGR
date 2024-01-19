@@ -56,23 +56,6 @@
 
 pipeline {
     agent any
-/*
-    stages {
-        stage('Build') {
-            steps {
-                git 'https://github.com/florescobar/Scambia-PracticasCC-UGR.git'
-                bat 'composer install'
-                bat 'cp .env.example .env'
-                bat 'php artisan key:generate'
-            }
-        }
-        stage('Test') {
-            steps {
-                bat './vendor/bin/phpunit'
-            }
-        }
-    }*/
-
     stages {
         stage('Clonar Repositorio') {
             steps {
@@ -80,8 +63,8 @@ pipeline {
                 git 'https://github.com/florescobar/Scambia-PracticasCC-UGR.git'
             }
         }
-
-        steps {
+        stage('Instalar Composer y Dependencias') {
+            steps {
                 // Descargar e instalar Composer
                 bat '''
                     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -96,20 +79,7 @@ pipeline {
                 // Instalar dependencias de Laravel usando Composer
                 bat 'php composer.phar install --no-interaction --prefer-dist'
             }
-
-
-        /*stage('Instalar Composer y Dependencias') {
-            steps {
-                // Configurar la herramienta Composer
-                script {
-                    def composerHome = tool 'Composer'
-                    env.PATH = "${composerHome}/bin:${env.PATH}"
-                }
-
-                // Instalar dependencias de Laravel usando Composer
-                bat 'composer install --no-interaction --prefer-dist'
-            }
-        }*/
+        }
 
         stage('Configuración de Entorno') {
             steps {
