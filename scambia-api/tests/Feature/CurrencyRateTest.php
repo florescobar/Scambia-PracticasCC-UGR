@@ -26,7 +26,7 @@ class CurrencyRateTest extends TestCase
         ]);
 
     } 
-
+    */
     public function test_calculate_amount(): void
     {
         
@@ -34,6 +34,8 @@ class CurrencyRateTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    /*
 
     public function test_for_calculate_currency_type_field()
     {
@@ -48,6 +50,7 @@ class CurrencyRateTest extends TestCase
                             'message' => 'El campo "¿ cuanto dinero envias?" tiene que ser un número.'
                         ]);
     }
+
 
     public function test_for_calculate_currency_required_fields()
     {
@@ -69,6 +72,7 @@ class CurrencyRateTest extends TestCase
             'message' => 'Ok',
         ]);
     } 
+    */
 
     public function test_get_currencyrate(): void
     {        
@@ -76,5 +80,4 @@ class CurrencyRateTest extends TestCase
 
         $response->assertStatus(200);
     }
-    */
 }

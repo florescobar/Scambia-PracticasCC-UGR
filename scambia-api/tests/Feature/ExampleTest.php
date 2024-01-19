@@ -17,11 +17,12 @@ class ExampleTest extends TestCase
                         'message' => 'El campo "¿ cuanto dinero envias?" es requerido.'
                     ]);
     }
+    */
 
     public function test_calculate_amount(): void
     {
         $response = $this->post('api/currencyrate/calculate');
 
         $response->assertStatus(200);
-    }*/
+    }
 }
