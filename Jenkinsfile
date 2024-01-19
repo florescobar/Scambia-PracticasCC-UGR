@@ -4,13 +4,33 @@ pipeline {
         // Definir variables de entorno si es necesario
         APP_ENV = 'production'
     }
-
+/*
     stages {
 
         stage('Ejecutar Pruebas') {
+            environment {
+                // Definir la variable de entorno para el ejecutable make
+                PATH = "C:\\MinGW\\bin\\:${env.PATH}"
+            }
             steps {
                 // Ejecutar pruebas PHPUnit utilizando el ejecutable 'make' definido en el PATH
                 bat 'cd scambia-api && make test'
+            }
+        }
+    }*/
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    bat 'cd scambia-api && make test'
+                }
             }
         }
     }
