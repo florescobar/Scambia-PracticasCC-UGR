@@ -20,14 +20,14 @@ jobs:
           php-version: '8.2'
           extensions: 'mbstring, zip, intl'
 
-      - name: Copy environment file
-        run: cp .env.example .env
+      #- name: Copy environment file
+      #  run: cp .env.example .env
 
       - name: Install dependencies
         run: composer install --no-interaction
 
-      - name: Generate application key
-        run: php artisan key:generate
+      #- name: Generate application key
+      #  run: php artisan key:generate
 
       - name: Run PHPUnit Tests
         run: vendor/bin/phpunit
