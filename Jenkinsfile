@@ -16,5 +16,19 @@ pipeline {
                 bat ' make test'
             }
         }
+
+         stage('Install Composer Dependencies') {
+            steps {
+                script {
+                    // Change to the directory containing the composer.json file
+                    dir('scambia-api') {
+                        // Run composer install
+                        bat 'composer install'
+                    }
+                }
+            }
+        }
     }
+
+   
 }
