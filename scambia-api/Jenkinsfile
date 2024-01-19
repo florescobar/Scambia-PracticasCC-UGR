@@ -26,10 +26,14 @@ pipeline {
             }
         }
 
-        stage('Clonar Repositorio') {
+        stage('Instalar Composer') {
             steps {
-                // Clonar el repositorio desde tu sistema de control de versiones
-                git 'https://github.com/florescobar/Scambia-PracticasCC-UGR.git'
+                // Instalar Composer globalmente
+                script {
+                    def composerHome = tool 'Composer'
+                    env.PATH = "${composerHome}/bin:${env.PATH}"
+                    sh 'composer --version'
+                }
             }
         }
 
