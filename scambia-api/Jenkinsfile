@@ -1,83 +1,59 @@
-/*pipeline {
-    agent any
-    environment {
-        // Definir variables de entorno si es necesario
-        APP_ENV = 'production'
-    }
-
-    stages {
-
-        stage('Ejecutar Pruebas') {
-            environment {
-                // Definir la variable de entorno para el ejecutable make
-                PATH = "C:\\MinGW\\bin\\:${env.PATH}"
-            }
-            steps {
-                // Ejecutar pruebas PHPUnit utilizando el ejecutable 'make' definido en el PATH
-                bat 'cd scambia-api && make test'
-            }
-        }
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Instalar Composer') {
-            steps {
-                // Instalar Composer globalmente
-                script {
-                    def composerHome = tool 'Composer'
-                    env.PATH = "${composerHome}/bin:${env.PATH}"
-                    sh 'composer --version'
-                }
-            }
-        }
-
-        stage('Instalar Dependencias') {
-            steps {
-                // Instalar dependencias de Laravel usando Composer
-                sh 'composer install --no-interaction --prefer-dist'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                script {
-                    bat 'make test'
-                }
-            }
-        }
-    }
-}*/
 
 pipeline {
     agent any
+
+    environment {
+        // Configura las variables de entorno necesarias para tu proyecto Laravel
+        APP_ENV = 'testing'
+    }
+
     stages {
-        /*stage('Clonar Repositorio') {
+        stage('Clonar Repositorio') {
             steps {
                 // Clonar el repositorio desde tu sistema de control de versiones
                 git 'https://github.com/florescobar/Scambia-PracticasCC-UGR.git'
             }
-        }*/
-        stage('Instalar Composer y Dependencias') {
+        }
+
+        stage('Instalar Dependencias y Configurar Entorno') {
             steps {
-                echo 'Running PHP 8.1 tests inside the container...'
-                bat 'php -v'
-                // echo 'Installing project composer dependencies...'
-                bat 'composer install --no-progress'
-                echo 'Running PHPUnit tests...'
-                //bat 'php ${WORKSPACE}/artisan test --coverage-html ${WORKSPACE}/report/clover --coverage-clover ${WORKSPACE}/report/clover.xml --log-junit ${WORKSPACE}/report/junit.xml'
+                // Descargar e instalar Composer
+                sh '''
+                    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+                    php -r "if (hash_file('sha384', 'composer-setup.php') === 'EXPECTED_HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+                    php composer-setup.php
+                    php -r "unlink('composer-setup.php');"
+                '''
+
+                // Instalar dependencias de Laravel usando Composer
+                sh 'php composer.phar install --no-interaction --prefer-dist'
+
+                // Configurar el archivo .env
+                sh 'cp .env.example .env'
+                sh 'php artisan key:generate'
             }
         }
+
         stage('Ejecutar Pruebas') {
             steps {
                 // Ejecutar pruebas PHPUnit
                 sh 'php artisan test'
             }
+        }
+
+        // Otros pasos según tus necesidades...
+
+    }
+
+    post {
+        success {
+            // Acciones a realizar si las pruebas son exitosas
+            echo 'Las pruebas PHPUnit han pasado exitosamente.'
+        }
+
+        failure {
+            // Acciones a realizar si las pruebas fallan
+            echo 'Las pruebas PHPUnit han fallado. Por favor, revisa y corrige los problemas.'
         }
     }
 }
