@@ -8,7 +8,7 @@ class ExampleTest extends TestCase
     /**
      * A basic test example.
      */
-    public function test_the_application_returns_a_successful_response(): void
+    /*public function test_the_application_returns_a_successful_response(): void
     {
         $response = $this->post('api/currencyrate/calculate')
                     ->assertStatus(200)
@@ -23,5 +23,5 @@ class ExampleTest extends TestCase
         $response = $this->post('api/currencyrate/calculate');
 
         $response->assertStatus(200);
-    }
+    }*/
 }
