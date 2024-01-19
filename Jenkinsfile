@@ -13,7 +13,7 @@ pipeline {
             }
             steps {
                 // Ejecutar pruebas PHPUnit utilizando el ejecutable 'make' definido en el PATH
-                bat ' cd tests/subfolder && make test'
+                bat ' make test'
             }
         }
     }
