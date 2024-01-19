@@ -1,10 +1,10 @@
-pipeline {
+/*pipeline {
     agent any
     environment {
         // Definir variables de entorno si es necesario
         APP_ENV = 'production'
     }
-/*
+
     stages {
 
         stage('Ejecutar Pruebas') {
@@ -17,7 +17,7 @@ pipeline {
                 bat 'cd scambia-api && make test'
             }
         }
-    }*/
+    }
 
     stages {
         stage('Checkout') {
@@ -49,6 +49,26 @@ pipeline {
                 script {
                     bat 'make test'
                 }
+            }
+        }
+    }
+}*/
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://github.com/Kennibravo/jenkins-laravel.git'
+                sh 'composer install'
+                sh 'cp .env.example .env'
+                sh 'php artisan key:generate'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './vendor/bin/phpunit'
             }
         }
     }
