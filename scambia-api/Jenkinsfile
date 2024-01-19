@@ -72,4 +72,66 @@ pipeline {
             }
         }
     }
+
+        agent any
+
+    environment {
+        // Configura las variables de entorno necesarias para tu proyecto Laravel
+        APP_ENV = 'testing'
+    }
+
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                // Clonar el repositorio desde tu sistema de control de versiones
+                git 'https://github.com/florescobar/Scambia-PracticasCC-UGR.git'
+            }
+        }
+
+        steps {
+                // Descargar e instalar Composer
+                bat '''
+                    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+                    php -r "if (hash_file('sha384', 'composer-setup.php') === 'EXPECTED_HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+                    php composer-setup.php
+                    php -r "unlink('composer-setup.php');"
+                '''
+
+                // Configurar la herramienta Composer
+                env.PATH = "${WORKSPACE}/composer:${env.PATH}"
+
+                // Instalar dependencias de Laravel usando Composer
+                bat 'php composer.phar install --no-interaction --prefer-dist'
+            }
+
+
+        /*stage('Instalar Composer y Dependencias') {
+            steps {
+                // Configurar la herramienta Composer
+                script {
+                    def composerHome = tool 'Composer'
+                    env.PATH = "${composerHome}/bin:${env.PATH}"
+                }
+
+                // Instalar dependencias de Laravel usando Composer
+                bat 'composer install --no-interaction --prefer-dist'
+            }
+        }*/
+
+        stage('Configuración de Entorno') {
+            steps {
+                // Copiar el archivo de configuración de ejemplo y configurar variables de entorno
+                bat 'cp .env.example .env'
+                bat'php artisan key:generate'
+                // Configurar otras variables de entorno si es necesario
+            }
+        }
+
+        stage('Ejecutar Pruebas') {
+            steps {
+                // Ejecutar pruebas PHPUnit
+                sh 'php artisan test'
+            }
+        }
+    }
 }
