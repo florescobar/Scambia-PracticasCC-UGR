@@ -26,6 +26,13 @@ pipeline {
             }
         }
 
+        stage('Clonar Repositorio') {
+            steps {
+                // Clonar el repositorio desde tu sistema de control de versiones
+                git 'https://github.com/florescobar/Scambia-PracticasCC-UGR.git'
+            }
+        }
+
         stage('Instalar Dependencias') {
             steps {
                 // Instalar dependencias de Laravel usando Composer
