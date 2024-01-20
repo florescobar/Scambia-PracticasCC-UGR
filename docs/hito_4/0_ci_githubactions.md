@@ -8,7 +8,7 @@ Hemos optado por Github Actions para implementar integracion continua en el proy
 #### GitHub Actions
 ------------
 
-Para llevar a cabo la automatización de las pruebas en la aplicación, hemos configurado el workflow Run PHPUnit Tests con la finalidad de que se ejecuten las pruebas cada vez que se cambios a la rama main. El archivo test_actions.yml se ha definido de la siguiente manera
+Para llevar a cabo la automatización de las pruebas en la aplicación, hemos configurado el workflow Run PHPUnit Tests con la finalidad de que se ejecuten las pruebas cada vez que se cambios a la rama main. El archivo [test_actions.yml](https://github.com/florescobar/Scambia-PracticasCC-UGR/blob/main/.github/workflows/test_actions.yml) se ha definido de la siguiente manera
 
 ```
 name: Run PHPUnit Tests

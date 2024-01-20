@@ -31,6 +31,12 @@ Scambia es el proyecto propuesto para las practicas de la asignatura Cloud Compu
 - [Uso de registros alternativos y públicos de contenedores](/docs/hito_3/3_actions.md).
 
 
+### Hito 4
+------------
+- [Elección de CI && Configuración](/docs/hito_4/0_ci_githubactions.md).
+- [CI Adicional: Circle CI](/docs/hito_4/1_ci_circleci.md).
+
+
 
 
 

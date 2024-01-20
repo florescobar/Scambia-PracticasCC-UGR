@@ -3,7 +3,7 @@
 #### Circle CI
 ------------
 
-Como sistema de integración adicional hemos elegido Circle CI. Como primer paso creamos la cuenta en [aquí](https://app.circleci.com/), seguido de ello se tuvo que crear el archivo [config.yml](https://app.circleci.com/) ya que de esta forma la plataforma Circle CI lo reconoce. Configuramos el archivo de la siguiente manera:
+Como sistema de integración adicional hemos elegido Circle CI. Como primer paso creamos la cuenta en [aquí](https://app.circleci.com/), seguido de ello se tuvo que crear el archivo [config.yml](https://github.com/florescobar/Scambia-PracticasCC-UGR/blob/main/.circleci/config.yml) ya que de esta forma la plataforma Circle CI lo reconoce. Configuramos el archivo de la siguiente manera:
 
 ```
 version: 2.1
