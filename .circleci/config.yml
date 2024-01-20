@@ -1,25 +1,14 @@
 version: 2.1
 
 jobs:
-  build:
+  test:
     docker:
-      - image: circleci/php:8.2-node-browsers
-
-    working_directory: ~/repo
-
+      - image: florescobar919/scambia-api-web:latest
     steps:
       - checkout
+      - run: cd scambia-api && composer install --no-interaction && make test
 
-      # Configura el entorno Laravel
-      - run:
-          name: Set up Laravel
-          command: |
-            sudo apt-get install -y libzip-dev
-            composer install --no-interaction --prefer-dist
-
-      # Ejecuta las pruebas PHPUnit
-      - run:
-          name: Run PHPUnit Tests
-          command: vendor/bin/phpunit
-
-# Configuración adicional según sea necesario
+workflows:
+  test_project:
+    jobs:
+      - test
