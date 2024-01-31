@@ -36,6 +36,11 @@ Scambia es el proyecto propuesto para las practicas de la asignatura Cloud Compu
 - [Elección de CI && Configuración](/docs/hito_4/0_ci_githubactions.md).
 - [CI Adicional: Circle CI](/docs/hito_4/1_ci_circleci.md).
 
+### Hito 5
+------------
+- [Justificación técnica del framework elegido para el microservicio](/docs/hito_5/0_justificacion.md).
+- [Diseño en general del API](/docs/hito_5/1_api.md).
+- [Uso de logs](/docs/hito_5/2_logs.md).
 
 
 

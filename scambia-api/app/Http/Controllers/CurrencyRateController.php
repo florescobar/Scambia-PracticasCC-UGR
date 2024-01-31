@@ -11,6 +11,7 @@ class CurrencyRateController extends Controller
 {
     public function getAll()
     {
+        \Log::channel('api')->info('Llamada a la API REST realizada', ['data' => null]);
         try {
             $currencies = CurrencyRate::all();
             $data = [
@@ -18,6 +19,7 @@ class CurrencyRateController extends Controller
             ];
             return response()->json(['data' => $data, 'message'=>'Ok', 'errorCode'=>'0']);
         } catch (\Exception $e) {
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' => $e]);
             return response()->json(['data' => null, 'message'=>'Ha ocurrido un error inesperado. Intente nuevamente: '.$e, 'errorCode'=>1]);     
         }
     }
@@ -25,6 +27,7 @@ class CurrencyRateController extends Controller
     public function getById($idCurrencyRate)
     {
         try {
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' =>$idCurrencyRate]);
             $currencyRate = CurrencyRate::where('idCurrencyRate', $idCurrencyRate)->get();
 
             $data = [
@@ -34,6 +37,7 @@ class CurrencyRateController extends Controller
             return response()->json(['data' => $data, 'message'=>'Ok', 'errorCode'=>'0']);  
 
         } catch (\Exception $e) {
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' => $e]);
             return response()->json(['data' => null, 'message'=>'Ha ocurrido un error inesperado. Intente nuevamente: '.$e, 'errorCode'=>1]);     
         }
     }
@@ -41,7 +45,7 @@ class CurrencyRateController extends Controller
     public function getActive($active = true)
     {
         try {
-        
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' =>$active]);
             $currencyRate = CurrencyRate::where('status', $active)->first();
 
             $data = [
@@ -51,6 +55,7 @@ class CurrencyRateController extends Controller
             return response()->json(['data' => $data, 'message'=>'Ok', 'errorCode'=>'0']);  
 
         } catch (\Exception $e) {
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' => $e]);
             return response()->json(['data' => null, 'message'=>'Ha ocurrido un error inesperado. Intente nuevamente: '.$e, 'errorCode'=>1]);     
         }
     }
@@ -59,6 +64,7 @@ class CurrencyRateController extends Controller
     {
         try
         {  
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' =>$request]);
             $message=''; 
             $amount = $request->input('amount');
 
@@ -101,6 +107,7 @@ class CurrencyRateController extends Controller
         catch(\Exception $e)
         {
             DB::rollback();
+            \Log::channel('api')->info('Llamada a la API REST realizada', ['data' => $e]);
             return response()->json(['data' => null, 'message'=>'Ha ocurrido un error inesperado. Intente nuevamente: '.$e, 'errorCode'=>1]);     
         }
     }
