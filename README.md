@@ -42,7 +42,7 @@ Scambia es el proyecto propuesto para las practicas de la asignatura Cloud Compu
 - [Diseño en general del API](/docs/hito_5/1_api.md).
 - [Uso de logs](/docs/hito_5/2_logs.md).
 
-### Hito 5
+### Hito 6
 ------------
 - [Justificación de la estructura del clúster & Justificación de la configuración de cada uno de los contenedores que lo componen](/docs/hito_6/0_justificacion.md).
 - [Documentación del fichero de composición & testeo](/docs/hito_6/1_justificacion.md).
